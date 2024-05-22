@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Boilerplate</title>
+    <title>Nick's Fibonacci</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Nick Bui's Fibonacci exercise</h1>
+        <h1>Nick Bui's Fibonacci Exercise</h1>
     </header>
     <main>
         <section>
-            <p>Fibonacci exercise</p>
+            <p>Enter the number of terms you want to generate (between 3 and 50):</p>
         </section>
         <form id="myForm">
-            <label for="times">How many times do you want to run it (between 3 and 50):</label>
-            <input type="text" id="times" name="times">
+            <div>
+                <label for="times">Number of terms:</label>
+                <input type="text" id="times" name="times">
+            </div>
             <button type="submit">Submit</button>
         </form>
+        <div id="result" style="display: none;">
+            <h2>Fibonacci Sequence</h2>
+            <p id="sequence"></p>
+        </div>
     </main>
+    <footer>
+        <p>&copy; 2024 Nick Bui. All rights reserved.</p>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>
