@@ -9,24 +9,33 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+  <!-- d-flex: sets the display to flex -->
+  <!-- w-100: sets the width to 100 -->
+  <!-- vh-100: sets the viewport height (vh) to 100%, this means that the div will take up 
+    100% of the height of the screen-->
+  <!-- justify-content-center:  flex items horizontally to the center  -->
+  <!-- align-items-center: flex items vertically to center-->
+  <!-- this layout is used for creating centered forms or messages in the middle of the screen-->
   <div class = "d-flex w-100 vh-100 justify-content-center align-items-center">
     <div class="col-4">
       <h1>Login</h1>
       <form> 
-        <div class="form-floating">
+        <!-- form-floating: create floating labels for form fields -->
+        <div class="form-floating mb-3">
           <input 
             type="email" 
             class="form-control" 
-            id="floatingInput" 
+            id="email" 
             placeholder="Email Address"
             required
           > 
-          <label for="floatingInput"></label>
+          <label for="email"></label>
+          <!-- valid-feedback: Bootstrap class used to provide feedback for form validation -->
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
-        <div class="form-floating">
+        <div class="form-floating mb-3">
           <input 
             type="password" 
             class="form-control" 
@@ -41,6 +50,10 @@
         </div>
       </form>
 
+      <!-- btn: basic button styling -->
+      <!-- btn-primary: applies the primary "blue" color scheme we all love -->
+      <!-- my-3: Adds vrtical margins of 3 units on the top and bottom for spacing -->
+      <!-- onclick is used because the button is not inside the form so can't use event listener-->
       <button 
         type="button" 
         class="btn btn-primary w-100 my-3" 
