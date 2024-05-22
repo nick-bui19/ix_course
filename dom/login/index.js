@@ -14,6 +14,7 @@ const onSubmit = () => {
     } else {
         console.log("Form not valid");
     }
-
+    
+    registerForm.classList.add("was-validated");
 }
 
