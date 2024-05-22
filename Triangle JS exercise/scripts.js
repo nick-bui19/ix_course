@@ -22,7 +22,7 @@ const onSubmit = (e) => {
     function calculateArea(inputArr){
         const [a, b, c] = inputArr;
         //heron's formula
-        const s = (a + b + c) / 2; // semi-perimeter
+        const s = (a + b + c) / 2; // semi-perimeter 
         const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
         return area;
     }
