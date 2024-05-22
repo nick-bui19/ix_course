@@ -7,9 +7,8 @@ const onSubmit = (e) => {
     const side1 = parseInt(document.getElementById('length1').value);
     const side2 = parseInt(document.getElementById('length2').value);
 
-
     if (isNaN(side0)||isNaN(side1)|isNaN(side2)) {
-        alert("please enter positive integers.");
+        alert("Please finish entering your numbers.");
         return;
     }
     
