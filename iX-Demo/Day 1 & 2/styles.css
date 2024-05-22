@@ -1,0 +1,12 @@
+h1{
+    color: blue;
+}
+
+.header{
+    font-family:'Courier New', Courier, monospace;
+}
+
+/* styling with id requires #*/
+#firstHeader{
+    color: coral;
+}
