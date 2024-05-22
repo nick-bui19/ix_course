@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Boilerplate</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div class = "d-flex w-100 vh-100 justify-content-center align-items-center">
+    <div class="col-4">
+      <h1>Register</h1>
+      <form> 
+        <div class="form-floating">
+          <input
+            type="text" 
+            class="form-control" 
+            id="firstName" 
+            placeholder="First Name"
+            required
+          >
+          </input>
+          <label for="floatingPassword"></label>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="form-floating">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="lastName" 
+            placeholder="Last Name"
+            required
+          >
+          </input>
+          <label for="floatingPassword"></label>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="form-floating">
+          <input 
+            type="email" 
+            class="form-control" 
+            id="floatingInput" 
+            placeholder="Email Address"
+            required
+          > 
+          <label for="floatingInput"></label>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="form-floating">
+          <input 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            placeholder="Password"
+            required
+          >
+          <label for="password"></label>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="form-floating">
+          <textarea 
+            type="text" 
+            class="form-control" 
+            id="bio" 
+            placeholder="Bio"
+          >
+          </textarea>
+          <label for="Bio"></label>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+      </form>
+
+      <button type="button" class="btn btn-primary w-100 my-3" onclick = "onSubmit()">Submit</button>
+    </div>
+
+    <div class="my-1">
+      <a href="../login/">Login</a>;
+    </div>
+  </div>  
+
+  
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Nick Bui. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
