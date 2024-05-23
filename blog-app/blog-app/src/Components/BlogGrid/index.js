@@ -39,6 +39,7 @@ export default function BlogGrid({ blogPosts }) {
             </div>
           )}
         </div>
+      
       </div>
       {blogPosts.length > 3 && (
         <div className="item-4">
