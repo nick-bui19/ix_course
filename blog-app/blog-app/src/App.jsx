@@ -4,6 +4,7 @@ import React from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from './Components/HomePage/index.js';
+import CategoriesPage from './Components/CategoriesPage/index.js';
 
 
 // import "boostrap/dist/js/bootstrap.min.js";
@@ -42,7 +43,7 @@ import HomePage from './Components/HomePage/index.js';
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <CategoriesPage />
     </div>
   );
 }

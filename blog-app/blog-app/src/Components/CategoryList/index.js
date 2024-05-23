@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./index.css";
 
 export default function CategoryList({ categories }) {
@@ -16,17 +15,17 @@ export default function CategoryList({ categories }) {
             }}
           >
             <div
-              className="card-body"
+              className="card-body d-flex w-100 justify-content-left align-items-center"
               style={{
                 backgroundColor: category.color + "33",
                 position: "relative",
-                zIndex: 0,
+                zIndex: 0, 
               }}
             >
               <h5 className="card-title">{category.title}</h5>
             </div>
             <div className="card-body">
-              <p className="card-text">
+              <p className="card-text" style={{textAlign: "left"}}>
                 {category.description.substring(1, 100)} ...
               </p>
             </div>

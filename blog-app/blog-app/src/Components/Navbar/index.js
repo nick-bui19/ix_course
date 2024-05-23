@@ -3,7 +3,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg">
-      <div style={{ margin: "0px 5%" }} className="container-fluid">
+      <div style={{ margin: "0px 5%" }} className="container-fluid pt-2 pb-2">
         <a className="navbar-brand" href="#">
           iX Software Engineering Blog
         </a>
@@ -20,9 +20,18 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+            <li className="nav-item d-flex w-100 justify-content-center align-items-center">
               <a className="nav-link active" aria-current="page" href="#">
                 Home
+              </a>
+              <a className="nav-link active" aria-current="page" href="#">
+                Categories
+              </a>
+              <a className="nav-link active" aria-current="page" href="#">
+                Blogs
+              </a>
+              <a className="nav-link active" aria-current="page" href="#">
+                About
               </a>
             </li>
           </ul>
