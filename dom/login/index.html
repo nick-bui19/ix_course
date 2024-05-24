@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
 </head>
 <body>
   <!-- d-flex: sets the display to flex -->
@@ -19,7 +20,7 @@
   <div class = "d-flex w-100 vh-100 justify-content-center align-items-center">
     <div class="col-4">
       <h1>Login</h1>
-      <form> 
+      <form id="loginForm"> 
         <!-- form-floating: create floating labels for form fields -->
         <div class="form-floating mb-3">
           <input 
@@ -34,6 +35,9 @@
           <div class="valid-feedback">
             Looks good!
           </div>
+          <div class="invalid-feedback">
+            Please enter a valid email.
+          </div>
         </div>
         <div class="form-floating mb-3">
           <input 
@@ -46,6 +50,9 @@
           <label for="password"></label>
           <div class="valid-feedback">
             Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter a password.
           </div>
         </div>
       </form>

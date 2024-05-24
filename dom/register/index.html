@@ -7,13 +7,14 @@
     <!-- Bootstrap CSS CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
+    <script src="./index.js"></script>
 </head>
 <body>
   <div class = "d-flex w-100 vh-100 justify-content-center align-items-center">
     <!-- size breakpoints, this is why we use bootstrap because resposiveness is built in -->
     <div class="col-10 col-sm-8 col-md-6 col-lg-4">
       <h1>Register</h1>
-      <form> 
+      <form id="registerForm"> 
         <div class="form-floating mb-3">
           <input
             type="text" 
@@ -22,10 +23,12 @@
             placeholder="First Name"
             required
           >
-          </input>
           <label for="firstName"></label>
           <div class="valid-feedback">
             Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter a valid first name.
           </div>
         </div>
         <div class="form-floating mb-3">
@@ -36,10 +39,12 @@
             placeholder="Last Name"
             required
           >
-          </input>
           <label for="lastName"></label>
           <div class="valid-feedback">
             Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter a valid last name.
           </div>
         </div>
         <div class="form-floating mb-3">
@@ -54,6 +59,9 @@
           <div class="valid-feedback">
             Looks good!
           </div>
+          <div class="invalid-feedback">
+            Please enter a valid email.
+          </div>
         </div>
         <div class="form-floating mb-3">
           <input 
@@ -66,6 +74,9 @@
           <label for="password"></label>
           <div class="valid-feedback">
             Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter a password.
           </div>
         </div>
         <div class="form-floating mb-3">
@@ -85,9 +96,9 @@
       <button type="button" class="btn btn-primary w-100 my-3" onclick = "onSubmit()">Submit</button>
     </div>
 
-    <div class="my-1">
-      <a href="../login/">Login</a>;
-    </div>
+      <div class="my-1">
+        <a href="../login/">Login</a>;
+      </div>
   </div>  
 
   

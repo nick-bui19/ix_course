@@ -1,23 +1,35 @@
 const onSubmit = () => {
     //fetching the form by id "registerForm" so you can work with the fields in the form
-    const registerForm = document.getElementById("registerForm");
+    const loginForm = document.getElementById("loginForm");
 
     //checkValid() method
-    if (format.checkValidity()){
+    if (loginForm.checkValidity()){
         //adds "was-validated" to form element. In Bootstrap, this triggers the display of 
         //validation feedback. Bootstrap will apply styles to the form based on whether they are 
         //valid or invalid.
-        registerForm.classList.add('was-validated');
+        loginForm.classList.add('was-validated');
         
-        const firstName = document.getElementById("firstName").value;
-        const lastName = document.getElementById("lastName").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        const bio = document.getElementById("bio").value;
 
-        console.log(firstName, lastName, password, email, bio);
+        console.log(email, password);
     } else {
         console.log("Form not valid");
     }
+
+    validateFormFields(loginForm);
 }
 
+const validateFormFields = (form) => {
+    const fields = form.querySelectorAll('input, textarea');
+
+    fields.forEach(field => {
+        if (!field.checkValidity()) {
+            field.classList.add('is-invalid');
+            field.classList.remove('is-valid');
+        } else {
+            field.classList.add('is-valid');
+            field.classList.remove('is-invalid');
+        }
+    });
+}
