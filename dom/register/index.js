@@ -18,6 +18,7 @@ const onSubmit = () => {
     validateFormFields(registerForm);
 }
 
+//display green for valid and red for invalid based on bootstrap
 const validateFormFields = (form) => {
     const fields = form.querySelectorAll('input, textarea');
 
