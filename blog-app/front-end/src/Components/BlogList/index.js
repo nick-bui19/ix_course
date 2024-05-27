@@ -4,7 +4,7 @@ import "./index.css";
 
 import BlogItem from "../BlogItem";
 
-export default function BlogGrid2({ blogPosts }) {
+export default function BlogList({ blogPosts }) {
   if (!blogPosts || !blogPosts.length) {
     return null;
   }

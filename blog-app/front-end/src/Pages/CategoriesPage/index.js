@@ -1,12 +1,13 @@
 import React from "react";
 
-import Heading from "../../Heading";
-import Navbar from "../../Navbar";
-import SubHeading from "../../SubHeading";
-import CategoryList from "../../CategoryList";
+import Heading from "../../Components/Heading";
+import Navbar from "../../Components/Navbar";
+import SubHeading from "../../Components/SubHeading";
+import CategoryList from "../../Components/CategoryList";
+import Footer from "../../Components/Footer";
 
 // Week 1: Import the blogPosts and categories from the dummy-data.json file
-const data = require("../../../dummy-data.json");
+const data = require("../../dummy-data.json");
 const categories = data.categories;
 
 export default function HomePage() {
@@ -17,7 +18,7 @@ export default function HomePage() {
         <Heading />
         <SubHeading subHeading={"Categories"} />
         <CategoryList categories={categories}></CategoryList>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );

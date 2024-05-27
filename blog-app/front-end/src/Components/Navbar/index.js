@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg">
       <div style={{ margin: "0px 5%" }} className="container-fluid pt-2 pb-2">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/home">
           iX Software Engineering Blog
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,18 +22,18 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item d-flex w-100 justify-content-center align-items-center">
-              <a className="nav-link active" aria-current="page" href="../Pages/HomePage/index.js">
+              <Link className="nav-link active" aria-current="page" to="/home">
                 Home
-              </a>
-              <a className="nav-link active" aria-current="page" href="../Pages/CategoriesPage/index.js">
+              </Link>
+              <Link className="nav-link active" aria-current="page" to="/categories">
                 Categories
-              </a>
-              <a className="nav-link active" aria-current="page" href="/BlogsPage">
+              </Link>
+              <Link className="nav-link active" aria-current="page" to="/blogs">
                 Blogs
-              </a>
-              <a className="nav-link active" aria-current="page" href="#">
+              </Link>
+              <Link className="nav-link active" aria-current="page" to="/home" /* TODO */>
                 About
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
