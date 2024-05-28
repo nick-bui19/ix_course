@@ -30,6 +30,8 @@ export default function CategoryList({ categories }) {
   );
 }
 
+//test comment
+
 CategoryList.propTypes = {
   categories: PropTypes.array.isRequired,
 }
