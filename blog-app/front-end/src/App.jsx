@@ -6,6 +6,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from './Pages/HomePage/index.js';
 import BlogsPage from './Pages/BlogsPage/index.js';
+import BlogDetailPage from './Pages/BlogsDetailPage/index.jsx';
 import CategoriesPage from './Pages/CategoriesPage/index.js';
 
 // import "boostrap/dist/js/bootstrap.min.js";
@@ -26,12 +27,12 @@ const router = createBrowserRouter([
     element: <CategoriesPage />
   },  
   {
-    path: "/BlogsPage",
+    path: "/blogs",
     element: <BlogsPage />
   },
   {
-    path: "/blogs/:categoryId?",
-    element: <BlogsPage />
+    path: "/blogs/:blogId",
+    element: <BlogDetailPage />
   },
 ]);
 
