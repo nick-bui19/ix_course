@@ -5,59 +5,92 @@ import Heading from "../../Components/Heading";
 import Navbar from "../../Components/Navbar";
 import BlogList from "../../Components/BlogList";
 import SubHeading from "../../Components/SubHeading";
-// import CategoriesList from "../../Components/CategoriesList";
 import Footer from "../../Components/Footer";
+
+import blogService from "../../services/blogService";
+import categoriesService from "../../services/categoriesService"; 
 
 import "../../App.css";
 import "./index.css";
 
-const data = require("../../dummy-data.json");
-const initialBlogPosts = data.blogPosts.reverse();
-const categories = data.categories;
-
 export default function BlogsPage() {
-  const { categoryId: categoryIdParam } = useParams();
-  const [categoryId, setCategoryId] = useState(undefined);
   const [blogs, setBlogs] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    function printHI() {
-      console.log("HI");
-    }
-
-    function printThere() {
-      setBlogs((prevBlogs) => {
-      console.log("there");
-      }, 500);
-    }
-
-    function printiX() {
-      console.log("iX");
-    }
-
-    printHI();
-    printThere();
-    printiX();
-  }, []); // Empty dependency array to run this effect only once
+    const fetchBlogs = async () => {
+      try {
+        const blogsRes = await blogService.getBlogs();
+        setBlogs(blogsRes); // Assuming blogsRes.data is an array of blogs
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   useEffect(() => {
-    // Filter the blogPosts based on the categoryId
-    const filteredBlogs = initialBlogPosts.filter((x) =>
-      categoryId !== undefined
-        ? x.categories.find((y) => y.id.toString() === categoryId.toString())
-        : true
-    );
-    setBlogs(filteredBlogs);
-  }, [categoryId]);
+    const fetchCategories = async () => {
+      try {
+        const categoriesRes = await categoriesService.getCategories();
+        setCategories(categoriesRes); // Assuming categoriesRes.data is an array of categories
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
-  const CategoriesList = ({ categoryId }) => {
+  const { categoryId: categoryIdParam } = useParams();
+
+  useEffect(() => {
+    if (categoryIdParam) {
+      setSelectedCategory(categoryIdParam);
+    }
+  }, [categoryIdParam]);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      const fetchFilteredBlogs = async () => {
+        try {
+          const filteredBlogsRes = await blogService.getBlogsByCategory(selectedCategory); // Assuming there's an endpoint for this
+          setBlogs(filteredBlogsRes.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchFilteredBlogs();
+    } else {
+      const fetchAllBlogs = async () => {
+        try {
+          const allBlogsRes = await blogService.getBlogs();
+          setBlogs(allBlogsRes.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchAllBlogs();
+    }
+  }, [selectedCategory]);
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId);
+  };
+
+  const renderCategories = () => {
+    if (!categories || categories.length === 0) {
+      return <p>Loading categories...</p>; // Loading state for categories
+    }
+
     return categories.map((category) => (
       <button
         key={category.id}
-        onClick={() => setCategoryId(category.id)}
-        style={{ color: categoryId === category.id.toString() ? "blue" : "black" }}
+        onClick={() => handleCategoryClick(category.id)}
+        style={{ color: selectedCategory === category.id.toString() ? "blue" : "black" }}
+        className="category-button"
       >
-        <p>{category.title}</p>
+        {category.title}
       </button>
     ));
   };
@@ -67,12 +100,11 @@ export default function BlogsPage() {
       <Navbar />
       <div className="container">
         <Heading />
+        <SubHeading subHeading={"Categories"} />
         <div className="scroll-menu">
-          <CategoriesList categoryId={categoryId} />
+          {renderCategories()}
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p className="page-subtitle">Blog Posts</p>
-        </div>
+        <SubHeading subHeading={"Blog Posts"} />
         <BlogList blogPosts={blogs} />
       </div>
       <Footer />
