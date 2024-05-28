@@ -7,6 +7,10 @@ import "./index.css";
 export default function CategoryList({ categories }) {
   const navigate = useNavigate();
 
+  if (!categories || !Array.isArray(categories)) {
+    return <p>Loading categories...</p>;
+  }
+
   return (
     <div className="category-list">
       {categories.map((category, index) => {

@@ -22,7 +22,7 @@ export default function BlogItem({
         <div className="card-text-bottom">
           <BlogItemText
             blogPost={blogPost}
-            headerFontSize="20px"
+            headerFontSize={20}
           ></BlogItemText>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function BlogItem({
         <div className="card-text-right">
           <BlogItemText
             blogPost={blogPost}
-            headerFontSize="20px"
+            headerFontSize={20}
           ></BlogItemText>
         </div>
       </div>

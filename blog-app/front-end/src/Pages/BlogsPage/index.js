@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Heading from "../../Components/Heading";
 import Navbar from "../../Components/Navbar";
@@ -13,44 +12,54 @@ import "../../App.css";
 import "./index.css";
 
 const data = require("../../dummy-data.json");
-const blogPosts = data.blogPosts.reverse();
+const initialBlogPosts = data.blogPosts.reverse();
 const categories = data.categories;
 
 export default function BlogsPage() {
   const { categoryId: categoryIdParam } = useParams();
   const [categoryId, setCategoryId] = useState(undefined);
-  let [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    // Week 1: Filter the blogPosts based on the categoryId
-    const blogs = blogPosts.filter((x) =>
+    function printHI() {
+      console.log("HI");
+    }
+
+    function printThere() {
+      setBlogs((prevBlogs) => {
+      console.log("there");
+      }, 500);
+    }
+
+    function printiX() {
+      console.log("iX");
+    }
+
+    printHI();
+    printThere();
+    printiX();
+  }, []); // Empty dependency array to run this effect only once
+
+  useEffect(() => {
+    // Filter the blogPosts based on the categoryId
+    const filteredBlogs = initialBlogPosts.filter((x) =>
       categoryId !== undefined
         ? x.categories.find((y) => y.id.toString() === categoryId.toString())
         : true
     );
-    setBlogs(() => blogs);
+    setBlogs(filteredBlogs);
   }, [categoryId]);
 
-  
-  //Filtering blogs by the ctergoryId passed in the URL
-  blogPosts = blogPosts.filter((x) =>
-    categoryId !== undefined
-      ? x.categories.find((y) => y.id.toString() === categoryId)
-      : true
-  );
-
   const CategoriesList = ({ categoryId }) => {
-    return categories.map((category, index) => {
-      return categoryId === category.id.toString() ? (
-        <button key={category.id} onClick={() => setCategoryId(category.id)} style={{ color: "blue" }}>
-          <p key={category.id}>{category.title}</p>
-        </button>
-      ) : (
-        <button key={category.id} onClick={() => setCategoryId(category.id)} style={{ color: "black" }}>
-          <p key={category.id}>{category.title}</p>
-        </button>
-      );
-    });
+    return categories.map((category) => (
+      <button
+        key={category.id}
+        onClick={() => setCategoryId(category.id)}
+        style={{ color: categoryId === category.id.toString() ? "blue" : "black" }}
+      >
+        <p>{category.title}</p>
+      </button>
+    ));
   };
 
   return (
@@ -59,11 +68,7 @@ export default function BlogsPage() {
       <div className="container">
         <Heading />
         <div className="scroll-menu">
-          <CategoriesList 
-              categories={categories} 
-              categoryId={categoryId}
-              setCategoryId={setCategoryId}>
-          </CategoriesList>
+          <CategoriesList categoryId={categoryId} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <p className="page-subtitle">Blog Posts</p>

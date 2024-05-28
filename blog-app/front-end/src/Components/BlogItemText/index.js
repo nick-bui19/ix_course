@@ -34,6 +34,6 @@ export default function BlogItemText({ blogPost, headerFontSize }) {
 }
 
 BlogItemText.propTypes = {
-  blogPost: PropTypes.array.isRequired,
+  blogPost: PropTypes.object.isRequired,
   headerFontSize: PropTypes.number.isRequired,
 };
