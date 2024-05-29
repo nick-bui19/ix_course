@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
  * GET /api/blogs/:id
  */
 router.get("/:id", (req, res) => {
-  blogController.getBlogByID(req, res);
+  blogController.getBlog(req, res);
 });
 
 /**
@@ -37,14 +37,14 @@ router.get("/categories/:id", (req, res) => {
  * Put /api/blogs/
  */
 router.put("/:id", (req, res) => {
-  blogController.updateBlogByID(req, res);
+  blogController.updateBlog(req, res);
 });
 
 /**
  * DELETE /api/blogs/
  */
 router.delete("/:id", (req, res) => {
-  blogController.deleteBlogByID(req, res);
+  blogController.deleteBlog(req, res);
 });
 
 module.exports = router;

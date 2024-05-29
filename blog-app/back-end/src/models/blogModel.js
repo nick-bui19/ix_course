@@ -7,8 +7,8 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    categoryId: {
-      type: String,
+    categoryIds: {
+      type: Array,
       required: true,
     },
     title: {
