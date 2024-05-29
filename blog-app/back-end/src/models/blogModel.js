@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//mongoose schema object??
 const blogSchema = new mongoose.Schema(
   {
     authorId: {
