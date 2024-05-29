@@ -3,6 +3,7 @@ const cors = require("cors");
 const port = 8000;
 
 const blogsRoutes = require("./routes/blogs");
+const categoriesRoutes = require ("./routes/categories");
 
 const app = express();
 
@@ -13,7 +14,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/blogs", blogsRoutes);
-app.use("/api/categories", blogsRoutes);
+app.use("/api/categories", categoriesRoutes);
+
+app.get("/", (req, res) => {
+    res.send("Welcome to the Blog API");
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

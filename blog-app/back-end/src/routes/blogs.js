@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
  * GET /api/blogs/:id
  */
 router.get("/:id", (req, res) => {
-  blogController.updateBlogByID(req, res);
+  blogController.getBlogByID(req, res);
 });
 
 /**
