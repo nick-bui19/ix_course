@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Heading from "../../Components/Heading";
-import Navbar from "../../Components/Navbar";
-import BlogList from "../../Components/BlogList";
-import SubHeading from "../../Components/SubHeading";
-import Footer from "../../Components/Footer";
+import Heading from "../../components/Heading";
+import Navbar from "../../components/Navbar";
+import BlogList from "../../components/BlogList";
+import SubHeading from "../../components/SubHeading";
+import Footer from "../../components/Footer";
+import AddEditBlogModal from "../../components/AddEditBlogModal";
 
 import blogService from "../../services/blogService";
 import categoriesService from "../../services/categoriesService"; 
@@ -104,7 +105,11 @@ export default function BlogsPage() {
         <div className="scroll-menu">
           {renderCategories()}
         </div>
-        <SubHeading subHeading={"Blog Posts"} />
+        <div>
+          <SubHeading subHeading={"Blog Posts"} />  
+          <button className="btn btn-outline-dark h-75">ADD BLOG</button>
+          <AddEditBlogModal>ADD BLOG</AddEditBlogModal>
+        </div>
         <BlogList blogPosts={blogs} />
       </div>
       <Footer />

@@ -44,6 +44,8 @@
     }
   };
   
+  //const getBlogsByCategory todo
+
   const updateBlog = async (req, res) => {
     try {
       const blog = await Blog.findById(req.params.id);

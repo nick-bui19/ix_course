@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Heading from "../../Components/Heading";
-import Navbar from "../../Components/Navbar";
-import SubHeading from "../../Components/SubHeading";
-import CategoryList from "../../Components/CategoryList";
-import Footer from "../../Components/Footer";
+import Heading from "../../components/Heading";
+import Navbar from "../../components/Navbar";
+import SubHeading from "../../components/SubHeading";
+import CategoryList from "../../components/CategoryList";
+import Footer from "../../components/Footer";
 
 import blogService from "../../services/blogService";
 import categoriesService from "../../services/categoriesService"; 

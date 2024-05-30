@@ -1,40 +1,35 @@
-import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import HomePage from './Pages/HomePage/index.js';
-import BlogsPage from './Pages/BlogsPage/index.js';
-import BlogDetailPage from './Pages/BlogsDetailPage/index.jsx';
-import CategoriesPage from './Pages/CategoriesPage/index.js';
+import HomePage from "./pages/Home";
+import BlogsPage from "./pages/Blogs";
+import BlogPage from "./pages/Blog";
 
-// import "boostrap/dist/js/bootstrap.min.js";
-// import "boostrap/dist/js/bootstrap.bundle.min";
-// import "bootstrap-icons/dotn/bootstrap-icons.css";
-
-const router = createBrowserRouter([
+const routes = [
   {
-    path: "/",
-    element: <HomePage />
+    path: "",
+    element: <HomePage />,
   },
   {
     path: "/home",
-    element: <HomePage />
+    element: <HomePage />,
   },
   {
-    path: "/categories",
-    element: <CategoriesPage />
-  },  
-  {
-    path: "/blogs",
-    element: <BlogsPage />
+    path: "/blogs/:categoryId?",
+    element: <BlogsPage />,
   },
   {
-    path: "/blogs/:blogId",
-    element: <BlogDetailPage />
+    path: "/blog/:blogId",
+    element: <BlogPage />,
   },
-]);
+];
+const router = createBrowserRouter(routes);
 
 function App() {
   return <RouterProvider router={router} />;

@@ -1,3 +1,25 @@
+const createBlogs = async (blog) => {
+    try {
+        //uses a 'fetch' API to make a GET request to the specified URL.
+        //'await' keyword is used to wait for the response.
+        const data = await fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", 
+        {
+            method: "CREATE",
+            headers: {
+                //headers include 'Content-Type' to specify the type of content being sent.
+             "Content-Type": "application/json",
+            },
+            body: blog,
+        }
+        );
+        //awaits for the data to be converted to the json format and stores it in
+        //the 'blogsApiData' variable.
+        const blogsApiData = await data.json();
+        //returns the data property from the 'blogsApiData' variable.
+        return blogsApiData.data;
+    } catch (error){}
+};
+
 const getBlogs = async () => {
     try {
         //uses a 'fetch' API to make a GET request to the specified URL.
@@ -19,8 +41,75 @@ const getBlogs = async () => {
     } catch (error){}
 };
 
+const getBlogByID = async (id) => {
+    try {
+        //uses a 'fetch' API to make a GET request to the specified URL.
+        //'await' keyword is used to wait for the response.
+        const data = await fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", 
+        {
+            method: "GET",
+            headers: {
+                //headers include 'Content-Type' to specify the type of content being sent.
+             "Content-Type": "application/json",
+            },
+            body: id,
+        }
+        );
+        //awaits for the data to be converted to the json format and stores it in
+        //the 'blogsApiData' variable.
+        const blogsApiData = await data.json();
+        //returns the data property from the 'blogsApiData' variable.
+        return blogsApiData.data;
+    } catch (error){}
+};
+
+const updateBlog = async () => {
+    try {
+        //uses a 'fetch' API to make a GET request to the specified URL.
+        //'await' keyword is used to wait for the response.
+        const data = await fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", 
+        {
+            method: "PUT",
+            headers: {
+                //headers include 'Content-Type' to specify the type of content being sent.
+             "Content-Type": "application/json",
+            },
+        }
+        );
+        //awaits for the data to be converted to the json format and stores it in
+        //the 'blogsApiData' variable.
+        const blogsApiData = await data.json();
+        //returns the data property from the 'blogsApiData' variable.
+        return blogsApiData.data;
+    } catch (error){}
+};
+
+const deleteBlog = async (id) => {
+    try {
+        //uses a 'fetch' API to make a GET request to the specified URL.
+        //'await' keyword is used to wait for the response.
+        const data = await fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", 
+        {
+            method: "DELETE",
+            headers: {
+                //headers include 'Content-Type' to specify the type of content being sent.
+             "Content-Type": "application/json",
+            },
+        }
+        );
+        //awaits for the data to be converted to the json format and stores it in
+        //the 'blogsApiData' variable.
+        const blogsApiData = await data.json();
+        //returns the data property from the 'blogsApiData' variable.
+        return blogsApiData.data;
+    } catch (error){}
+};
+
 //creates a 'blogService' object with a property getBlogs that refer to the function up top.
-const blogService = { getBlogs, }
+const blogService = { 
+    createBlogs,
+    getBlogs, 
+}
 
 
 //makes it so that 'blogService' is the default export of the module, making it available for
