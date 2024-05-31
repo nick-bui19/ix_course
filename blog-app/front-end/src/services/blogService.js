@@ -145,31 +145,6 @@ const blogService = {
 //import in other files.
 export default blogService;
 
-// return new Promise((resolve, reject) => {
-        // fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", {
-        //     method: "GET",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //   });
-//promise
-       // .then((response) => {
-        //   if (!response.ok) {
-        //     throw new Error('Network response was not ok');
-        //   }
-        //   return response.json();
-        // })
-        // .then((data) => {
-        //   console.log("Success");
-        //   resolve(data); // Resolve the promise with the data
-        // })
-        // .catch((error) => {
-        //   console.log("Error:", error);
-        //   reject(error); // Reject the promise with the error
-        // });
-    // });
-
-
     //callback???
 // const getBlogs = (onSuccess, onError) => {
 //     fetch("https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs", {

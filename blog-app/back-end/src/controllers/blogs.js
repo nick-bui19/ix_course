@@ -1,6 +1,6 @@
 const Blog = require("../models/Blog");
 
-const createBlogs = async (req, res) => {
+const createBlog = async (req, res) => {
   try {
     const categoryIds = req?.body?.categories.map((x) => x.id);
     const blog = new Blog({
@@ -107,7 +107,7 @@ const deleteBlogByID = async (req, res) => {
 };
 
 const blogController = {
-  createBlogs,
+  createBlog,
   getBlogs,
   getBlogById,
   getBlogsByCategoryID,

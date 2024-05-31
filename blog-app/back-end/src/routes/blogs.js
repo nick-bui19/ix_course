@@ -6,45 +6,34 @@ const blogController = require("../controllers/blogs");
 /**
  * POST /api/blogs
  */
-router.post("/", (req, res) => {
-  blogController.createBlogs(req, res);
-});
+router.post("/", blogController.createBlog);
 
 /**
  * GET /api/blogs
  */
-router.get("/", (req, res) => {
-  blogController.getBlogs(req, res);
-});
+router.get("/", blogController.getBlogs);
 
 /**
- * Get blogs by blogID
+ * Get blogs by blog ID
  * GET /api/blogs/:id
  */
-router.get("/:id", (req, res) => {
-  blogController.getBlog(req, res);
-});
+router.get("/:id", blogController.getBlogById);
 
 /**
- * Get blogs by categoryID
+ * Get blogs by category ID
  * GET /api/blogs/categories/:id
  */
-router.get("/categories/:id", (req, res) => {
-  blogController.getBlogsByCategoryID(req, res);
-});
+router.get("/categories/:id", blogController.getBlogsByCategoryId);
 
 /**
- * Put /api/blogs/
+ * PUT /api/blogs/:id
  */
-router.put("/:id", (req, res) => {
-  blogController.updateBlog(req, res);
-});
+router.put("/:id", blogController.updateBlogById);
 
 /**
- * DELETE /api/blogs/
+ * DELETE /api/blogs/:id
  */
-router.delete("/:id", (req, res) => {
-  blogController.deleteBlog(req, res);
-});
+router.delete("/:id", blogController.deleteBlogById);
+
 
 module.exports = router;

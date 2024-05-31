@@ -9,56 +9,73 @@ import Footer from "../../components/Footer";
 
 import blogService from "../../services/blogService";
 import categoriesService from "../../services/categoriesService";
+import SuccessToast from "../../components/SuccessToast";
+import ErrorToast from "../../components/ErrorToast";
+import Loading from "../../components/Loading";
 
 // Week 1: Import the blogPosts and categories from the dummy-data.json file
 // const data = require("../../dummy-data.json");
 // const blogs = data.blogPosts.reverse();
 // const categories = data.categories;
 
-export default function HomePage() {
+export default function Home() {
+  const [loading, setLoading] = useState();
+  const [isSuccess, setIsSuccess] = useState();
+  const [isError, setIsError] = useState();
+  const [message, setMessage] = useState();
   const [blogs, setBlogs] = useState();
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState();
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogsRes = await blogService.getBlogs();
-        setBlogs(blogsRes);
+        setLoading(true);
+        const blogsRes = await blogService.fetchBlogs();
+        const categoryRes = await categoryService.fetchCategories();
+        setBlogs(blogsRes.data.reverse());
+        setCategories(categoryRes.data);
+        setLoading(false);
       } catch (err) {
-        console.log(err);
+        setIsError(true);
+        setMessage(err);
+        setLoading(false);
       }
     };
     fetchBlogs();
   }, []);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const categoriesRes = await categoriesService.getCategories();
-        console.log("Fetched Categories: ", categoriesRes);
-        setCategories(categoriesRes);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchCategories();
-  }, []);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
       <Navbar />
+      <Heading />
       <div className="container">
-        <Heading />
-        <SubHeading subHeading={"Recent Blog Posts"} />
-        <BlogGrid blogPosts={blogs}></BlogGrid>
+        <SubHeading subHeading={"Recent blog posts"} />
+        <BlogGrid blogs={blogs} />
         <SubHeading subHeading={"Categories"} />
-        <CategoryList categories={categories}></CategoryList>
+        <CategoriesList categories={categories} />
         <Footer />
+        <SuccessToast
+          show={isSuccess}
+          message={message}
+          onClose={() => {
+            setIsSuccess(false);
+          }}
+        />
+        <ErrorToast
+          show={isError}
+          message={message}
+          onClose={() => {
+            setIsError(false);
+          }}
+        />
       </div>
     </>
   );
 }
-
 
 //    //using promises
 // blogService.getBlogs().then((blogs) => {
