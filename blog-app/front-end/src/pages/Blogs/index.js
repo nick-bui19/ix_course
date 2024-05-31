@@ -22,7 +22,7 @@ export default function BlogsPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogsRes = await blogService.getBlogs();
+        const blogsRes = await blogService.fetchBlogs();
         setBlogs(blogsRes); // Assuming blogsRes.data is an array of blogs
       } catch (err) {
         console.log(err);
@@ -55,7 +55,7 @@ export default function BlogsPage() {
     if (selectedCategory) {
       const fetchFilteredBlogs = async () => {
         try {
-          const filteredBlogsRes = await blogService.getBlogsByCategory(selectedCategory); // Assuming there's an endpoint for this
+          const filteredBlogsRes = await blogService.fetchBlogsByCategoryId(selectedCategory); // Assuming there's an endpoint for this
           setBlogs(filteredBlogsRes.data);
         } catch (err) {
           console.log(err);
@@ -65,7 +65,7 @@ export default function BlogsPage() {
     } else {
       const fetchAllBlogs = async () => {
         try {
-          const allBlogsRes = await blogService.getBlogs();
+          const allBlogsRes = await blogService.fetchBlogs();
           setBlogs(allBlogsRes.data);
         } catch (err) {
           console.log(err);
