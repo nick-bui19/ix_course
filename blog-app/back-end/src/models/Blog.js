@@ -32,9 +32,9 @@ const blogSchema = new mongoose.Schema(
   { timeStamp: true }
 );
 
-if (author && authorId.id) {
-  
-}
+// if (author && authorId.id) {
+
+// }
 
 
 module.exports = mongoose.model("Blog", blogSchema);
