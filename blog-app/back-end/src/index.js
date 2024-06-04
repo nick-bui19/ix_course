@@ -7,6 +7,7 @@ connectDB();
 
 const blogsRoutes = require("./routes/blogs");
 const categoriesRoutes = require ("./routes/categories");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/blogs", blogsRoutes);
 app.use("/api/categories", categoriesRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Blog API");

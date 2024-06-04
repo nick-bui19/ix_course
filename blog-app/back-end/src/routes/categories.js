@@ -1,21 +1,34 @@
 const express = require("express");
-const { default: categoryService } = require("../../../front-end/src/services/categoriesService");
 const router = express.Router();
+const {
+  createCategory,
+  getCategories,
+  getCategoryById,
+  updateCategoryByID,
+  deleteCategoryByID,
+} = require("../controllers/categories.js");
+const { protect } = require("../middleware/authMiddleware");
 
-router.post("/", (req, res) => {
-  categoryController.createCategory(req, res);
+router.post("/", protect, (req, res) => {
+  createCategory(req, res);
 });
 
 router.get("/", (req, res) => {
-  categoryController.getCategories(req, res);
+  getCategories(req, res);
 });
 
-router.put("/", (req, res) => {
-  categoryController.updateCategory(req, res);
+router.get("/:id", (req, res) => {
+  getCategoryById(req, res);
 });
 
-router.delete("/", (req, res) => {
-  categoryController.deleteCategory(req, res);
+router.put("/:id", protect, (req, res) => {
+  updateCategoryByID(req, res);
+});
+
+router.delete("/:id", protect, (req, res) => {
+  deleteCategoryByID(req, res);
 });
 
 module.exports = router;
+
+//const { default: categoryService } = require("../../../front-end/src/services/categoriesService");

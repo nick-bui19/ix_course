@@ -1,39 +1,34 @@
 const express = require("express");
 const router = express.Router();
+const {
+  createBlog,
+  getBlogs,
+  getBlogById,
+  updateBlogByID,
+  deleteBlogByID,
+} = require("../controllers/blogs");
+const { protect } = require("../middleware/authMiddleware");
 
-const blogController = require("../controllers/blogs");
+router.post("/", protect, (req, res) => {
+  createBlog(req, res);
+});
 
-/**
- * POST /api/blogs
- */
-router.post("/", blogController.createBlog);
+router.get("/", (req, res) => {
+  getBlogs(req, res);
+});
 
-/**
- * GET /api/blogs
- */
-router.get("/", blogController.getBlogs);
+router.get("/:id", (req, res) => {
+  getBlogById(req, res);
+});
 
-/**
- * Get blogs by blog ID
- * GET /api/blogs/:id
- */
-router.get("/:id", blogController.getBlogById);
+//getBlogsByCategoryID to add
 
-/**
- * Get blogs by category ID
- * GET /api/blogs/categories/:id
- */
-router.get("/categories/:id", blogController.getBlogsByCategoryId);
+router.put("/:id", protect, (req, res) => {
+  updateBlogByID(req, res);
+});
 
-/**
- * PUT /api/blogs/:id
- */
-router.put("/:id", blogController.updateBlogById);
-
-/**
- * DELETE /api/blogs/:id
- */
-router.delete("/:id", blogController.deleteBlogById);
-
+router.delete("/:id", protect, (req, res) => {
+  deleteBlogByID(req, res);
+});
 
 module.exports = router;
