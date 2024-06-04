@@ -1,20 +1,21 @@
 const express = require("express");
+const { default: categoryService } = require("../../../front-end/src/services/categoriesService");
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  res.send("Hello from categories!");
+  categoryController.createCategory(req, res);
 });
 
 router.get("/", (req, res) => {
-  res.send("Hello from categories!");
+  categoryController.getCategories(req, res);
 });
 
 router.put("/", (req, res) => {
-  res.send("Hello from categories!");
+  categoryController.updateCategory(req, res);
 });
 
 router.delete("/", (req, res) => {
-  res.send("Hello from categories!");
+  categoryController.deleteCategory(req, res);
 });
 
 module.exports = router;
