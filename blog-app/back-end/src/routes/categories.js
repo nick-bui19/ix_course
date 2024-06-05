@@ -6,6 +6,7 @@ const categoryController = require("../controllers/categories");
 const { protect } = require("../middleware/authMiddleware");
 
 router.post("/", protect, (req, res) => {
+  console.log("AAAA")
   categoryController.createCategory(req, res);
 });
 

@@ -2,7 +2,7 @@ const Blog = require("../models/Blog");
 
 const createBlogs = async (req, res) => {
   try {
-    console.log(req.body);
+    console.log(req.body + "1");
     const categoryIds = req?.body?.categories.map((x) => x.id);
     const blog = new Blog({
       title: req.body.title,
@@ -40,13 +40,13 @@ const getBlogs = async (req, res) => {
       data: blogs,
     });
   } catch (err) {
-    res.status(500).json({ message: error.message, data: {} });
+    res.status(500).json({ message: err.message, data: {} });
   }
 };
 
 const getBlogById = async (req, res) => {
   try {
-    console.log(req.params.id);
+    console.log(req.params.id + "2");
     const blog = await Blog.findById(req.params.id)
       .populate({
         path: "categoryIds",
@@ -64,7 +64,7 @@ const getBlogById = async (req, res) => {
 
 const getBlogsByCategoryID = async (req, res) => {
   try {
-    console.log(req.params.id);
+    console.log(req.params.id + "3");
     let filter = {};
     if (req.params.id != "null" && req.params.id != "undefined") {
       filter = { categoryIds: req.params.id };
@@ -79,12 +79,12 @@ const getBlogsByCategoryID = async (req, res) => {
       data: blogs,
     });
   } catch (err) {
-    res.status(500).json({ message: error.message, data: {} });
+    res.status(500).json({ message: err.message, data: {} });
   }
 };
 
 const updateBlogByID = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body + "4");
   try {
     const blog = await Blog.findById(req.params.id)
       .populate({
