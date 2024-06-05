@@ -30,5 +30,3 @@ router.delete("/:id", protect, (req, res) => {
 });
 
 module.exports = router;
-
-//const { default: categoryService } = require("../../../front-end/src/services/categoriesService");
