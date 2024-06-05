@@ -11,6 +11,7 @@ export default function AddEditBlogModal({
   createBlogPost,
 }) {
   const [blog, setBlog] = useState();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const modalEl = document.getElementById("addEditModal");
 

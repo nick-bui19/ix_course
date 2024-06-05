@@ -31,7 +31,7 @@ export default function Home() {
       try {
         setLoading(true);
         const blogsRes = await blogService.fetchBlogs();
-        const categoryRes = await categoryService.fetchCategories();
+        const categoryRes = await categoriesService.fetchCategories();
         setBlogs(blogsRes.data.reverse());
         setCategories(categoryRes.data);
         setLoading(false);
@@ -56,7 +56,7 @@ export default function Home() {
         <SubHeading subHeading={"Recent blog posts"} />
         <BlogGrid blogs={blogs} />
         <SubHeading subHeading={"Categories"} />
-        <CategoriesList categories={categories} />
+        <CategoryList categories={categories} />
         <Footer />
         <SuccessToast
           show={isSuccess}

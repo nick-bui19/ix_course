@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
-import CategoryList from "../../components/CategoriesList";
+import CategoryList from "../../components/CategoryList";
 import Footer from "../../components/Footer";
 import Loading from "../../components/Loading";
 
-import categoryService from "../../services/categoryService";
+import categoriesService from "../../services/categoriesService";
 import SuccessToast from "../../components/SuccessToast";
 import ErrorToast from "../../components/ErrorToast";
-import AddEditCategoryModal from "../../components/AddEditCategoryModal";
+import AddEditCategoryModal from "../../components/AddEditCategoriesModal";
 import DeleteCategoryModal from "../../components/DeleteCategoryModal";
 
 export default function CategoriesPage() {
@@ -27,7 +27,7 @@ export default function CategoriesPage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const categoriesRes = await categoryService.fetchCategories();
+        const categoriesRes = await categoriesService.fetchCategories();
         setCategories(categoriesRes.data);
         setLoading(false);
       } catch (err) {
@@ -58,7 +58,7 @@ export default function CategoriesPage() {
 
   const createCategory = async (category) => {
     try {
-      const newCategory = await categoryService.createCategory(category);
+      const newCategory = await categoriesService.createCategory(category);
       setIsSuccess(true);
       setMessage(newCategory.message);
       setCategories((prev) => {
@@ -73,7 +73,7 @@ export default function CategoriesPage() {
 
   const updateCategory = async (category) => {
     try {
-      const updatedCategory = await categoryService.updateCategory(category);
+      const updatedCategory = await categoriesService.updateCategory(category);
       setIsSuccess(true);
       setMessage(updatedCategory.message);
       setCategories((prev) => {
@@ -90,7 +90,7 @@ export default function CategoriesPage() {
 
   const removeCategory = async (category) => {
     try {
-      const newBlog = await categoryService.deleteCategory(category.id);
+      const newBlog = await categoriesService.deleteCategory(category.id);
       setIsSuccess(true);
       setMessage(newBlog.message);
       setCategories((prev) => prev.filter((x) => x.id !== category.id));

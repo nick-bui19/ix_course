@@ -3,6 +3,7 @@ const createBlog = async (blog) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
       body: JSON.stringify(blog),
     });
@@ -21,6 +22,7 @@ const createBlog = async (blog) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
     });
   
@@ -38,6 +40,7 @@ const fetchBlogById = async (id) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
     },
   });
 
@@ -57,6 +60,7 @@ const fetchBlogsByCategoryId = async (categoryId) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
         },
       }
     );
@@ -77,6 +81,7 @@ const fetchBlogsByAuthorId = async (authorId) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
         },
       }
     );
@@ -98,6 +103,7 @@ const updateBlog = async (blog) => {
       headers: {
         //headers include 'Content-Type' to specify the type of content being sent.
         "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
       body: JSON.stringify(blog),
     });
@@ -118,6 +124,7 @@ const deleteBlogsById = async (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
       },
     });
   
