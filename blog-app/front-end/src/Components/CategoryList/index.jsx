@@ -1,25 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
 import "./index.css";
+
 import EditButtons from "../EditButtons";
 
 export default function CategoriesList({ categories, onEdit, onDelete }) {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   if (!categories && !categories?.length) {
     return null;
   }
-
-  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="category-list">
       {categories.map((category) => {
         return (
-          <Link
+          <button
             key={category.id}
             className="card"
             style={{ borderRadius: "0px", border: "none" }}
-            to={`/categories`}
+            onClick={() => {
+              console.log("TODO: Navigate to categories page");
+            }}
           >
             <div
               className="card-body w-100"
@@ -36,7 +39,7 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
                 {category.description.substring(1, 100)} ...
               </p>
             </div>
-            {user && user.token && onEdit && onDelete && (
+            {user && user?.token && onEdit && onDelete && (
               <EditButtons
                 onEdit={() => {
                   onEdit(category);
@@ -46,15 +49,13 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
                 }}
               />
             )}
-          </Link>
+          </button>
         );
       })}
     </div>
   );
 }
 
-CategoriesList.propTypes = {
+CategoriesList.prototype = {
   categories: PropTypes.array.isRequired,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func,
 };
