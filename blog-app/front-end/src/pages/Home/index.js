@@ -10,14 +10,28 @@ import Footer from "../../components/Footer";
 import blogService from "../../services/blogService";
 import categoryService from "../../services/categoryService";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogs, reset as resetBlogs } from "../../features/blogsSlice";
+
+
 export default function Home() {
-  const [blogs, setBlogs] = useState();
+  // const [blogs, setBlogs] = useState();
+  const dispatch = useDispatch();
   const [categories, setCategories] = useState();
 
+  const {
+    blogs,
+    isError: isBlogsError,
+    isSuccess: blogsSuccess,
+    isLoading: isLoadingBlogs,
+    message: blogsMessage,
+  } = useSelector((state) => state.blogs);
+
   useEffect(() => {
-    const fetchBlogs = async () => {
+    const fetchData = async () => {
       try {
-        const blogsRes = await blogService.fetchBlogs();
+        // const blogsRes = await blogService.fetchBlogs();
+        dispatch(fetchBlogs);
         const categoryRes = await categoryService.fetchCategories();
         setBlogs(blogsRes.data);
         setCategories(categoryRes.data);
@@ -25,8 +39,13 @@ export default function Home() {
         console.log(err);
       }
     };
-    fetchBlogs();
+    fetchData();
   }, []);
+
+  if(isLoadingBlogs){
+    return <Loading />;  
+  }
+
 
   return (
     <>
