@@ -14,7 +14,7 @@ const createBlog = async (blog) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 1");
       throw error.message;
     }
   }
@@ -37,7 +37,7 @@ const fetchBlogs = async () => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 2");
       throw error.message;
     }
   }
@@ -59,7 +59,7 @@ const fetchBlogByID = async (id) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 3");
       throw error.message;
     }
   }
@@ -68,6 +68,7 @@ const fetchBlogByID = async (id) => {
   return blogsApiData;
 };
 
+//this is the buggy function
 const fetchBlogsByCategoryId = async (categoryId) => {
   const response = await fetch(
     "http://localhost:8000/api/blogs/categories/" + categoryId,
@@ -84,7 +85,7 @@ const fetchBlogsByCategoryId = async (categoryId) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 4");
       throw error.message;
     }
   }
@@ -109,7 +110,7 @@ const fetchBlogsByAuthorId = async (authorId) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 5");
       throw error.message;
     }
   }
@@ -133,7 +134,7 @@ const updateBlog = async (blog) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 6");
       throw error.message;
     }
   }
@@ -157,7 +158,7 @@ const deleteBlog = async (id) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
+      const error = new Error("Something went wrong 7");
       throw error.message;
     }
   }

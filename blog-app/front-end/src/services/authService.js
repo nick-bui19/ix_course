@@ -13,8 +13,8 @@ const register = async (userData) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
-      throw error.message;
+      // const error = new Error("Something went wrong");
+      // throw error.message;
     }
   }
 
@@ -38,8 +38,8 @@ const login = async (userData) => {
       throw res.message || JSON.stringify(res);
     } catch (err) {
       console.log(err);
-      const error = new Error("Something went wrong");
-      throw error.message;
+      // const error = new Error("Something went wrong");
+      // throw error.message;
     }
   }
 
