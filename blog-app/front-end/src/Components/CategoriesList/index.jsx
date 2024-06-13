@@ -8,7 +8,7 @@ import EditButtons from "../EditButtons";
 export default function CategoriesList({ categories, onEdit, onDelete }) {
   const user = JSON.parse(localStorage.getItem("user"));
 
-  if (!categories && !categories?.length) {
+  if (!categories) {
     return null;
   }
 

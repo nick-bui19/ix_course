@@ -1,62 +1,83 @@
-import React, { useEffect, useState } from "react";
-
-import Navbar from "../../components/Navbar";
-import Heading from "../../components/Heading";
-import SubHeading from "../../components/SubHeading";
-import BlogGrid from "../../components/BlogGrid";
-import CategoriesList from "../../components/CategoriesList";
-import Footer from "../../components/Footer";
-
-import blogService from "../../services/blogService";
-import categoryService from "../../services/categoryService";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogs, reset as resetBlogs } from "../../features/blogsSlice";
+import { fetchBlogs, reset as resetBlog } from "../../features/blogsSlice";
+import {
+  fetchCategories,
+  reset as resetCategory,
+} from "../../features/categoriesSlice";
 
+import "../../App.css";
 
-export default function Home() {
-  // const [blogs, setBlogs] = useState();
+import Heading from "../../components/Heading";
+import Navbar from "../../components/Navbar";
+import BlogGrid from "../../components/BlogGrid";
+import Footer from "../../components/Footer";
+import SubHeading from "../../components/SubHeading";
+import CategoryList from "../../components/CategoriesList";
+import SuccessToast from "../../components/SuccessToast";
+import ErrorToast from "../../components/ErrorToast";
+import Loading from "../../components/Loading";
+
+export default function HomePage() {
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState();
 
   const {
     blogs,
     isError: isBlogsError,
-    isSuccess: blogsSuccess,
+    isSuccess: isBlogSuccess,
     isLoading: isLoadingBlogs,
     message: blogsMessage,
   } = useSelector((state) => state.blogs);
 
+  const {
+    categories,
+    isError: isCategoriesError,
+    isSuccess: isCategoriesSuccess,
+    isLoading: isLoadingCategories,
+    message: categoriesMessage,
+  } = useSelector((state) => state.categories);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // const blogsRes = await blogService.fetchBlogs();
-        dispatch(fetchBlogs);
-        const categoryRes = await categoryService.fetchCategories();
-        setBlogs(blogsRes.data);
-        setCategories(categoryRes.data);
-      } catch (err) {
-        console.log(err);
-      }
+    dispatch(fetchCategories());
+    dispatch(fetchBlogs());
+    return () => {
+      dispatch(resetBlog());
+      dispatch(resetCategory());
     };
-    fetchData();
-  }, []);
+  }, [dispatch]);
 
-  if(isLoadingBlogs){
-    return <Loading />;  
+  if (isLoadingCategories || isLoadingBlogs) {
+    return <Loading />;
   }
-
 
   return (
     <>
       <Navbar />
-      <Heading />
       <div className="container">
-        <SubHeading subHeading={"Recent blog posts"} />
-        <BlogGrid blogPosts={blogs} />
-        <CategoriesList categories={categories} />
+        <Heading />
+        <SubHeading subHeading={"Recent Blog Posts"} />
+        <BlogGrid blogPosts={blogs}></BlogGrid>
+        <SubHeading subHeading={"Categories"} />
+        <CategoryList categories={categories}></CategoryList>
         <Footer />
       </div>
+      <SuccessToast
+        show={isBlogSuccess || isCategoriesSuccess}
+        message={blogsMessage || categoriesMessage}
+        onClose={() => {
+          dispatch(resetBlog());
+          dispatch(resetCategory());
+        }}
+      />
+      <ErrorToast
+        show={isBlogsError || isCategoriesError}
+        message={blogsMessage || categoriesMessage}
+        onClose={() => {
+          dispatch(resetBlog());
+          dispatch(resetCategory());
+        }}
+      />
     </>
   );
 }
