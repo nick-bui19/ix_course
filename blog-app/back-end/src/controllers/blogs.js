@@ -2,8 +2,10 @@ const Blog = require("../models/Blog");
 
 const createBlogs = async (req, res) => {
   try {
-    console.log(req.body + "1");
-    const categoryIds = req?.body?.categories.map((x) => x.id);
+    console.log(req.body);
+
+    //make sure this is ok.
+    const categoryIds = req?.body?.categories.map((x) => x.id); //check if needed
     const blog = new Blog({
       title: req.body.title,
       description: req.body.description,
@@ -26,7 +28,7 @@ const createBlogs = async (req, res) => {
       data: blogRes,
     });
   } catch (err) {
-    res.status(500).json({ message: error.message, data: {} });
+    res.status(500).json({ message: err.message, data: {} });
   }
 };
 
