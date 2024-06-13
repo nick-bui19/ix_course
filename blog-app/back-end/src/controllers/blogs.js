@@ -9,7 +9,9 @@ const createBlogs = async (req, res) => {
     const blog = new Blog({
       title: req.body.title,
       description: req.body.description,
-      image: req.body.image,
+      image: req?.file?.path
+        ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
+        : "",      
       content: req.body.content,
       authorId: req.body.authorId,
       categoryIds: categoryIds,
@@ -95,6 +97,10 @@ const updateBlogByID = async (req, res) => {
       .populate({ path: "authorId" });
     if (blog) {
       const categoryIds = req?.body?.categories.map((x) => x.id);
+      (blog.image = req?.file?.path
+        ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
+        : blog.image),
+        (blog.title = req?.body?.title || blog.title);
       blog.authorId = req?.body?.authorId || blog.authorId;
       blog.categoryIds = categoryIds ? categoryIds : blog.categoryIds;
       blog.title = req?.body?.title || blog.title;
