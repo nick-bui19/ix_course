@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "melodic-eye-426809-s0",
+  "private_key_id": "50acc1aea8f6971eeb7b10058725ed5353035509",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCo9NKzpKHC5NoC\n7zqiSDQ51zAAFzLxfWGQv8M2S2qgWWQZ34bcff/lvOnIwVyjFQS3Ry5BjtbTVbh5\nqdeob+VuzhyDoMGgjIGCcYfu5qRLiAi5xIGiiTnm/wTutGlr54O3HlF8b4B0JtZz\noWZtFD9M0oWWf8PfxTDcLBlgQ+7q/q0qraT5R6fYFiADiPZ6iakfFoBj1bMin8GG\nlUmy/coP1WBnICOzxewlNrU5IMg10FzzkmfwFXosDHiCV4xxXUF6if3sDVmpWcoS\nr0ccm9zGVksNjLTgUDuub0wY/K1W1bAHrmiQ8XGUFuou1butim0qzBWR4CBs5qEb\nHdLXI+z7AgMBAAECggEAEshcysxzkIy2e9BdOVXuOxE5bIPSYwGoS1o2I8ll33ub\nODvJl1DeljYBML3mRC79qOOzOGXea1IX7FaS+05X4uXrn5UgfBkCph4O7uJvGK0q\neH8TAPRhHn/ylsLcXBA5wVgP1lXi9twBHTZaglKCPafDDW8YtxNfPNVzi2h3SA0S\nXq9RiH2wJWOKF3p7mT0WG762lzeDgvtJYvD6jCZ8Z/48F+h8+/Uza82508COVtKt\nNeE9pPdFM2ivusk0w8eZM6ar0HingPwXKrK0J5uQlVKmITOM2N+D2tkLvCE0/BdB\nhztZKiFYvYDGwEnrus+WNc3u/mCJJ4dYy1jwdYVGKQKBgQDScchSMS6yzohogRLf\n/mTyi1QcGg+achxRZsviiKyFpHUBuY0m1DoZmqpj5wZWb67ek9DETYFshKFt6c/s\nMrGDET2KpVmtTPSbiZ6AFoN0PD/T3VXDbP1RfHUgmlLwr77axIZE7OuZYvlN2ec7\n20I90QMKRDjnGvSPMCsmOLRaxQKBgQDNh+PUBiR7unJc7K9k9OwJM/sXg+Y1vhVl\n2yOAcrMSCfPrugENyzfvmYjyGtGN6t9UHoZ/ALny+PPoouvImEg5L0SHK7MlqA98\n40GcrBU9QQRdlw/DXtB1eqsgDqWTMRPNGuHBshtRa+Tsy1hDMfxAiuoInDm3ghz5\nJRYfg5akvwKBgEeYHiaYROLgENg80UcTLRS3Ae5tj1Fj8O5goox3Ivp0cLodfj/v\ng7SiQcWrGyTc6gkfEK84Dwf0N1dFbE9XD70faGh6yH+E5tLjhuDcx+wLc0uIyVyq\n/6NxTAfDeOQZZjzXDzbzw1NzsI0jzN84QNj2+qnLe/Bj4z+zi3p9YB5hAoGAIR02\n0M9Yi3LDwEMGE07+xJDScLx4l8oTaoC/HI/eWBawbRdf2hgW4Aytqsw1XRctekEc\nzFOSohoIOkAdmwkmAcii0uBwka2dKTL4PETheygBiw6upHyfO35TGewiMy/iD9a3\n7txCWID4tkog41qnWMLI6DA7gFx/TIj0Iomx+MMCgYAFv64TwNpJWV8pspRHo5j1\n21D5WSOi6onibguYeEJuDyHSBkbOvMo1lBu1wkRssD1Kd9DD6Va4Zl/wXhWUP38i\nDRi1+OExldI6YQAgAJAf0wGKWIIEBG7iLdQzF68yZ91axOss2k3ctZq6hLtH4HkC\n1rbUvTi3UyDaRx1S/K1Y3w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tronggiao1908@melodic-eye-426809-s0.iam.gserviceaccount.com",
+  "client_id": "105037843538563554866",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tronggiao1908%40melodic-eye-426809-s0.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
