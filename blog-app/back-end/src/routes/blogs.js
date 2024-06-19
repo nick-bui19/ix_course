@@ -15,7 +15,7 @@ const logMiddleware = (req, res, next) => {
 /**
  * POST /api/blogs
  */
-router.post("/", logMiddleware, protect, upload.single("image"), (req, res) => {
+router.post("/", logMiddleware, upload.single("image"), (req, res) => {
   blogController.createBlogs(req, res);
 });
 

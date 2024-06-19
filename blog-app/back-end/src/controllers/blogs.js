@@ -1,11 +1,21 @@
+const mongoose = require('mongoose');
 const Blog = require("../models/Blog");
 
 const createBlogs = async (req, res) => {
   try {
     console.log(req.body);
 
-    //make sure this is ok.
-    const categoryIds = req?.body?.categories.map((x) => x.id); //check if needed
+    // Parse categories if they are sent as a string
+    let categories = [];
+    if (typeof req.body.categories === 'string') {
+      categories = JSON.parse(req.body.categories);
+    } else if (Array.isArray(req.body.categories)) {
+      categories = req.body.categories;
+    }
+
+    // Ensure categoryIds are converted to ObjectId
+    const categoryIds = categories.map((x) => new mongoose.Types.ObjectId(x.id));
+    
     const blog = new Blog({
       title: req.body.title,
       description: req.body.description,
@@ -13,7 +23,7 @@ const createBlogs = async (req, res) => {
         ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
         : "",      
       content: req.body.content,
-      authorId: req.body.authorId,
+      authorId: new mongoose.Types.ObjectId(req.body.authorId),
       categoryIds: categoryIds,
     });
 
@@ -87,9 +97,38 @@ const getBlogsByCategoryID = async (req, res) => {
   }
 };
 
+const getBlogsByAuthorID = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let filter = {};
+    if (req.params.id != "null" && req.params.id != "undefined") {
+      filter = { authorId: req.params.id };
+    }
+    const blogs = await Blog.find(filter)
+      .populate({
+        path: "categoryIds",
+      })
+      .populate({ path: "authorId" });
+    res.status(200).json({
+      message: "Get blogs by authorID!",
+      data: blogs,
+    });
+  } catch (err) {
+    res.status(500).json({ message: error.message, data: {} });
+  }
+};
+
 const updateBlogByID = async (req, res) => {
   console.log(req.body + "4");
   try {
+    let imageURL = "";
+    if (req?.file?.path) {
+      imageURL = await uploadToFirebaseStorage(
+        req?.file?.path,
+        req?.file?.path
+      );
+    }
+    console.log(req.body);
     const blog = await Blog.findById(req.params.id)
       .populate({
         path: "categoryIds",
@@ -97,15 +136,14 @@ const updateBlogByID = async (req, res) => {
       .populate({ path: "authorId" });
     if (blog) {
       const categoryIds = req?.body?.categories.map((x) => x.id);
-      (blog.image = req?.file?.path
-        ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
-        : blog.image),
-        (blog.title = req?.body?.title || blog.title);
+      blog.image = imageURL ? imageURL : blog.image;
       blog.authorId = req?.body?.authorId || blog.authorId;
       blog.categoryIds = categoryIds ? categoryIds : blog.categoryIds;
       blog.title = req?.body?.title || blog.title;
       blog.description = req?.body?.description || blog.description;
-      blog.content = req.body.content ? req.body.content : blog.content;
+      blog.content = req.body.content
+        ? JSON.parse(req.body.content)
+        : blog.content;
       const updatedBlog = await blog.save();
       const blogRes = await updatedBlog.populate({
         path: "categoryIds",
@@ -138,6 +176,7 @@ const blogController = {
   getBlogs,
   getBlogById,
   getBlogsByCategoryID,
+  getBlogsByAuthorID,
   updateBlogByID,
   deleteBlogByID,
 };

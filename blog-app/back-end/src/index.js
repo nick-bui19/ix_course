@@ -22,6 +22,11 @@ app.use("/api/blogs", blogsRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/auth", authRoutes);
 
+app.post('/api/blogs', (req, res) => {
+  console.log(req.body); // This should print the blog object
+  // Your logic here...
+});
+
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.listen(port, () => {

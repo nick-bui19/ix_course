@@ -1,14 +1,14 @@
 const { Storage } = require("@google-cloud/storage");
 
 const storage = new Storage({
-  projectId: "your-project-id",
-  keyFilename: "./gcp_key.json",
+  projectId: "melodic-eye-426809-s0",
+  keyFilename: "melodic-eye-426809-s0-50acc1aea8f6.json",
 });
 
 const uploadToFirebaseStorage = async (filepath, fileName) => {
   try {
-    const gcs = storage.bucket("gs://your-bucket-name");
-    const storagepath = `your-bucket-name/${fileName}`;
+    const gcs = storage.bucket("gs://blog-app-bucket-1");
+    const storagepath = `blog-app-bucket-1/${fileName}`;
 
     const result = await gcs.upload(filepath, {
       destination: storagepath,
