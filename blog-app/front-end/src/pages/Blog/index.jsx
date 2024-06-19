@@ -14,7 +14,6 @@ export default function BlogPage() {
     printHello();
   }
 
-
   const callBackFunction = () => {
     console.log("there");
   }

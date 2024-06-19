@@ -15,7 +15,7 @@ const logMiddleware = (req, res, next) => {
 /**
  * POST /api/blogs
  */
-router.post("/", logMiddleware, upload.single("image"), (req, res) => {
+router.post("/", logMiddleware, protect, upload.single("image"), (req, res) => {
   blogController.createBlogs(req, res);
 });
 
@@ -40,6 +40,14 @@ router.get("/:id", (req, res) => {
  */
 router.get("/categories/:id", (req, res) => {
   blogController.getBlogsByCategoryID(req, res);
+});
+
+/**
+ * Get blogs by authorID
+ * GET /api/blogs/author/:id
+ */
+router.get("/author/:id", (req, res) => {
+  blogController.getBlogsByAuthorID(req, res);
 });
 
 /**

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -79,7 +80,20 @@ export default function Navbar() {
                   </ul>
                 </div>
               </li>
-            ) : null}
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/register">
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
